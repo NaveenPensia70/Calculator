@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-around;
 }
-.display{
+.display-container{
     height: 70px;
     width: 320px;
     border-radius: 10px;

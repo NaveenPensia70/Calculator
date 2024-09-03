@@ -12,10 +12,11 @@ let plusBtn=document.querySelector("#plus");
 let fractionBtn=document.querySelector("#fraction");
 let backspaceBtn=document.querySelector("#backspace");
 let equalsBtn=document.querySelector("#equals");
-let allButtons=document.querySelectorAll("buttons");
+let allButtons=document.querySelectorAll("button");
 let stringNumberArray=[];
 let numberArray=[];
-let result;
+let result
+let storeOperator="";
 
 //created getNumbers() to take first operands as input
 function getNumbers(){
@@ -29,8 +30,8 @@ function getNumbers(){
         console.log(stringNumberArray);
         stringNumberArray.map(function(number){
             displayContent.textContent=number;
-            numberArray=parseInt(number);
         })
+        numberArray=stringNumberArray.map(Number);
     });
 });
 }
@@ -38,21 +39,45 @@ getNumbers();
 
 
 //now first i am creating functions for add, subtract, multiply and divide
-function sum(){
-    plusBtn.addEventListener('click',function(){
-    result=numberArray.reduce(function(total,current){
-        return total+current;
+function getOperator(){
+    operatorButton.forEach(function(opButtons){
+    opButtons.addEventListener('click',function(event){
+    // result=numberArray.reduce(function(total,current){
+    //     return total+current;
+    storeOperator=event.target.textContent.trim();
+    console.log(storeOperator);
     },);
-    console.log(result);
-});
+})
 }
-sum();
-// function equals(){
-//     equalsBtn.addEventListener('click',function(){
-//         console.log(result);
-//     });
-// };
-// equals();
+function equals(){
+    equalsBtn.addEventListener('click',function(){
+        console.log("Equals button clicked");
+        console.log("storeOperator:", storeOperator);
+        if(storeOperator=='+') {
+            console.log("inside if");
+            result=numberArray.reduce(function(total,current){
+                return total+current;
+            });
+            console.log("Result:", result);
+        } else {
+            console.log("Not entering if statement");
+        }
+    });
+}
+getOperator();
+function equals(){
+    equalsBtn.addEventListener('click',function(){
+        if(storeOperator=='+')
+        {
+            console.log("inside if");
+        result=numberArray.reduce(function(total,current){
+        return total+current;
+            });
+            // console.log(result);
+        }
+    });
+};
+equals();
 
 // function subtract(num1,num2){
 //     return num1-num2;

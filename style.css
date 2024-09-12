@@ -32,7 +32,7 @@
     justify-content: space-around;
     gap: 9px;
 }
-.number-button,.operator-button{
+.number-button,.operator-button,.equals-button{
     height: 55px;
     width: 55px;
     padding: 15px 5px;

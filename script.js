@@ -15,7 +15,7 @@ let equalsBtn=document.querySelector("#equals");
 let allButtons=document.querySelectorAll("button");
 let stringNumberArray=[];
 let numberArray=[];
-let result
+let result;
 let storeOperator="";
 
 //trying approach of considering 2 operands by storing them in different variable
@@ -24,127 +24,64 @@ let secondNumber=null;
 let operator=null;
 function getExpression(){
     let completeNumber="";
-    numberButton.forEach(numb)
+    numberButton.forEach(function(numbers){
     {
-        numb.addEventListener("click",function(event){
+        numbers.addEventListener("click",function(event){
             console.log("Number button is clicked.");
             const numberValue=event.target.textContent;
             completeNumber+=numberValue;
             displayContent.textContent=completeNumber;
         })
-    }
-    operatorButton.addEventListener("click",function(event){
+    }})
+    operatorButton.forEach(function(operators)
+    {
+    operators.addEventListener("click",function(event){
+        console.log("Operator clicked");
             operator=event.target.textContent.trim();
             firstNumber=parseFloat(completeNumber);
             completeNumber="";
+            console.log(operator);
     })
+})
     equalsBtn.addEventListener("click",function(event){
-            secondNumber=completeNumber;
-            operator=event.target.textContent;
+        console.log("Equal button clicked");
+            secondNumber=parseFloat(completeNumber);
+            // operator=event.target.textContent;
+            // console.log(operator);
             if(!isNaN(firstNumber) && !isNaN(secondNumber))
             {
+                console.log("inside if");
                 switch(operator){
                 case '+':
-                    result=firstNumber + secondNumber;
+                    result=firstNumber + secondNumber; 
+                    break;
+                case '-':
+                    result=firstNumber - secondNumber;
+                    break;
+                case '*':
+                    result=firstNumber * secondNumber;
+                    break;
+                case '/':
+                    result= firstNumber / secondNumber;
+                    break;
+                case '%':
+                    result=firstNumber % secondNumber;
+                    break;
+                case 'AC':
+                    // console.log("Hi AC");
+                    firstNumber=NULL;
+                    secondNumber=NULL;
+                    operator=NULL;
+                    result=0;
+                    displayContent.textContent=0;
+                    break;
                 }
             }
+          displayContent.textContent=result;  
     })
 }
 getExpression();
 
-//created getNumbers() to take first operands as input
-// function getNumbers(){
-//     let storeNumber=" ";
-//     let completeNumber=" ";
-//     allButtons.forEach(function(buttons){
-//     buttons.addEventListener('click',function(event){
-//         storeNumber=event.target.textContent;
-//         completeNumber=completeNumber+storeNumber;
-//         stringNumberArray=completeNumber.split(/[+-/*%=]/);
-//         console.log(stringNumberArray);
-//         stringNumberArray.map(function(number){
-//             displayContent.textContent=number;
-//         })
-//         numberArray=stringNumberArray.map(Number);
-//     });
-// });
-// }
-// getNumbers();
-
-
-//now first i am creating functions for add, subtract, multiply and divide
-// function getOperator(){
-//     operatorButton.forEach(function(opButtons){
-//     opButtons.addEventListener('click',function(event){
-//     // result=numberArray.reduce(function(total,current){
-//     //     return total+current;
-//     storeOperator=event.target.textContent.trim();
-//     console.log(storeOperator);
-//     },);
-// })
-// }
-
-// getOperator();
-// function equals(){
-//     equalsBtn.addEventListener('click',function(){
-//         // console.log("Store operator inside equals function: ",storeOperator);
-//         // console.log("Comparison result",storeOperator=='+')
-//         if(storeOperator=='+')
-//         {
-//             // console.log("inside if");
-//         result=numberArray.reduce(function(total,current){
-//         return total+current;
-//             });
-//             console.log(result);
-//         }
-//         if(storeOperator=='-')
-//             {
-//                 // console.log("inside if");
-//             result=numberArray.reduce(function(total,current){
-//             return total-current;
-//                 });
-//                 console.log(result);
-//             }
-//             else if(storeOperator=='*')
-//                 {
-//                     // console.log("inside if");
-//                 result=numberArray.reduce(function(total,current){
-//                 return total*current;
-//                     },1);
-//                     console.log(result);
-//                 }
-//                 else if(storeOperator=='/')
-//                     {
-//                         // console.log("inside if");
-//                     result=numberArray.reduce(function(total,current){
-//                     return total/current;
-//                         },1);
-//                         console.log(result);
-//                     }
-//                     else if(storeOperator=='%')
-//                         {
-//                             // console.log("inside if");
-//                         result=numberArray.reduce(function(total,current){
-//                         return total%current;
-//                             },1);
-//                             console.log(result);
-//                         }
-        
-        
-//     });
-// };
-// equals();
-
-// function subtract(num1,num2){
-//     return num1-num2;
-// }
-// function multiply(num1,num2){
-//     return num1*num2;
-// }
-// function modulus(num1,num2){
-//     return num1%num2;
-
-// }
 
 
 
